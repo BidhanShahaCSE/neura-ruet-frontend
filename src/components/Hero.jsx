@@ -51,16 +51,22 @@ const Hero = () => {
 
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                            <motion.a
-                                href="/NeuraRUET.apk"
-                                download
+                            <motion.button
+                                onClick={() => {
+                                    const link = document.createElement('a');
+                                    link.href = '/NeuraRUET.apk';
+                                    link.download = 'NeuraRUET.apk';
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                }}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-neon text-dark font-semibold rounded-full hover:bg-neon-dark hover:shadow-neon-md transition-all duration-300"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-neon text-dark font-semibold rounded-full hover:bg-neon-dark hover:shadow-neon-md transition-all duration-300 cursor-pointer"
                             >
                                 <HiDownload className="text-lg" />
                                 Download Now
-                            </motion.a>
+                            </motion.button>
 
                             {/* Platform pills (Android + iOS) */}
                             <div className="inline-flex items-center gap-3">

@@ -19,9 +19,17 @@ const Navbar = () => {
 
     const handleNavClick = (e, href) => {
         e.preventDefault();
+        const wasOpen = isOpen;
         setIsOpen(false);
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        const scroll = () => {
+            const el = document.querySelector(href);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        };
+        if (wasOpen) {
+            setTimeout(scroll, 350);
+        } else {
+            scroll();
+        }
     };
 
     return (
