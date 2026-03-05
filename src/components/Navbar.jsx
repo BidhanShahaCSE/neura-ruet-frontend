@@ -38,8 +38,8 @@ const Navbar = () => {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-dark/80 backdrop-blur-xl border-b border-white/5 shadow-lg'
-                    : 'bg-transparent'
+                ? 'bg-dark/80 backdrop-blur-xl border-b border-white/5 shadow-lg'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,14 +73,23 @@ const Navbar = () => {
                         </a>
                     </div>
 
-                    {/* Mobile Toggle */}
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-white text-2xl p-2"
-                        aria-label="Toggle menu"
-                    >
-                        {isOpen ? <HiX /> : <HiMenuAlt3 />}
-                    </button>
+                    {/* Mobile actions: download pill + toggle */}
+                    <div className="md:hidden flex items-center gap-3">
+                        <a
+                            href="#role-cta"
+                            onClick={(e) => handleNavClick(e, '#role-cta')}
+                            className="px-3 py-1.5 bg-neon text-dark font-semibold text-sm rounded-full hover:bg-neon-dark hover:shadow-neon transition-all duration-300"
+                        >
+                            Download
+                        </a>
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-white text-2xl p-2"
+                            aria-label="Toggle menu"
+                        >
+                            {isOpen ? <HiX /> : <HiMenuAlt3 />}
+                        </button>
+                    </div>
                 </div>
             </div>
 

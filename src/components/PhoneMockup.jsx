@@ -26,17 +26,15 @@ const slideVariants = {
 
 const PhoneMockup = () => {
     const [[current, direction], setCurrent] = useState([0, 1]);
-    const [paused, setPaused] = useState(false);
 
     const advance = useCallback(() => {
         setCurrent(([prev]) => [(prev + 1) % screenshots.length, 1]);
     }, []);
 
     useEffect(() => {
-        if (paused) return;
         const id = setInterval(advance, INTERVAL);
         return () => clearInterval(id);
-    }, [paused, advance]);
+    }, [advance]);
 
     const goTo = (idx) => {
         setCurrent(([prev]) => [idx, idx > prev ? 1 : -1]);
@@ -45,8 +43,6 @@ const PhoneMockup = () => {
     return (
         <div
             className="relative w-[280px] sm:w-[300px] md:w-[320px] mx-auto"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
         >
             {/* Glow effect behind phone */}
             <div className="absolute inset-0 -m-8 rounded-full bg-neon/10 blur-3xl animate-glow-pulse" />
@@ -98,11 +94,10 @@ const PhoneMockup = () => {
                             className="group p-0.5"
                         >
                             <span
-                                className={`block rounded-full transition-all duration-300 ${
-                                    i === current
+                                className={`block rounded-full transition-all duration-300 ${i === current
                                         ? 'w-4 h-1.5 bg-neon shadow-[0_0_8px_rgba(124,255,107,0.6)]'
                                         : 'w-1.5 h-1.5 bg-white/30 group-hover:bg-white/60'
-                                }`}
+                                    }`}
                             />
                         </button>
                     ))}

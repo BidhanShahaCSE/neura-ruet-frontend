@@ -4,29 +4,6 @@ import { FaAndroid, FaApple } from 'react-icons/fa';
 import PhoneMockup from './PhoneMockup';
 
 const Hero = () => {
-    const APK_URL = '/NeuraRUET.apk';
-    const APK_FILENAME = 'NeuraRUET.apk';
-
-    const startApkDownload = () => {
-        try {
-            const link = document.createElement('a');
-            link.href = APK_URL;
-            link.download = APK_FILENAME;
-            link.rel = 'noopener';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-        } finally {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            if (isIOS) {
-                setTimeout(() => {
-                    window.location.assign(APK_URL);
-                }, 0);
-            }
-        }
-    };
-
     return (
         <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
             {/* Background gradient effects */}
@@ -44,7 +21,7 @@ const Hero = () => {
                     >
                         {/* Heading */}
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                            Your University{' '}
+                            Your RUET{' '}
                             <span className="block">Life,</span>
                             <span className="text-gradient block">Augmented by</span>
                             <span className="text-gradient block">AI.</span>
@@ -68,26 +45,15 @@ const Hero = () => {
 
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                            <motion.button
-                                type="button"
-                                onClick={startApkDownload}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-neon text-dark font-semibold rounded-full hover:bg-neon-dark hover:shadow-neon-md transition-all duration-300 cursor-pointer"
-                            >
-                                <HiDownload className="text-lg" />
-                                Download Now
-                            </motion.button>
-
-                            {/* Platform pills (Android + iOS) */}
-                            <div className="inline-flex items-center gap-3">
-                                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon/10 border border-neon/20">
-                                    <FaAndroid className="text-neon text-sm" />
-                                    <span className="text-xs text-white/90">Android</span>
+                            {/* Platform pills (Android + iOS) - enlarged */}
+                            <div className="inline-flex items-center gap-4">
+                                <span className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neon/10 border border-neon/20">
+                                    <FaAndroid className="text-neon text-lg" />
+                                    <span className="text-sm text-white/90 font-semibold">Android</span>
                                 </span>
-                                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon/10 border border-neon/20">
-                                    <FaApple className="text-neon text-sm" />
-                                    <span className="text-xs text-white/90">iOS</span>
+                                <span className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neon/10 border border-neon/20">
+                                    <FaApple className="text-neon text-lg" />
+                                    <span className="text-sm text-white/90 font-semibold">iOS</span>
                                 </span>
                             </div>
                         </div>
