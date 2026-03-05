@@ -114,13 +114,7 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
-                            <a
-                                href="#role-cta"
-                                onClick={(e) => handleNavClick(e, '#role-cta')}
-                                className="mt-2 px-5 py-2.5 bg-neon text-dark font-semibold text-sm rounded-full text-center hover:bg-neon-dark transition-all duration-300"
-                            >
-                                Download App
-                            </a>
+                            {/* Download App anchor removed for mobile - small pill remains beside menu */}
                         </div>
                     </motion.div>
                 )}
