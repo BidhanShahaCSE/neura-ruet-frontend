@@ -4,10 +4,27 @@ import { FaAndroid, FaApple } from 'react-icons/fa';
 import PhoneMockup from './PhoneMockup';
 
 const Hero = () => {
-    const handleScroll = (e, target) => {
-        e.preventDefault();
-        const el = document.querySelector(target);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const APK_URL = '/NeuraRUET.apk';
+    const APK_FILENAME = 'NeuraRUET.apk';
+
+    const startApkDownload = () => {
+        try {
+            const link = document.createElement('a');
+            link.href = APK_URL;
+            link.download = APK_FILENAME;
+            link.rel = 'noopener';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } finally {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            if (isIOS) {
+                setTimeout(() => {
+                    window.location.assign(APK_URL);
+                }, 0);
+            }
+        }
     };
 
     return (
@@ -52,14 +69,8 @@ const Hero = () => {
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                             <motion.button
-                                onClick={() => {
-                                    const link = document.createElement('a');
-                                    link.href = '/NeuraRUET.apk';
-                                    link.download = 'NeuraRUET.apk';
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    document.body.removeChild(link);
-                                }}
+                                type="button"
+                                onClick={startApkDownload}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-neon text-dark font-semibold rounded-full hover:bg-neon-dark hover:shadow-neon-md transition-all duration-300 cursor-pointer"
