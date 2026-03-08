@@ -226,7 +226,7 @@ const DashboardPage = () => {
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
         <div
-          className="flex items-center justify-between px-4 py-4 z-10"
+          className="sticky top-0 flex items-center justify-between px-4 py-4 z-20"
           style={{ background: 'linear-gradient(to bottom, #000000, rgba(0,0,0,0.75), transparent)' }}
         >
           <div className="flex items-center gap-3 px-1">

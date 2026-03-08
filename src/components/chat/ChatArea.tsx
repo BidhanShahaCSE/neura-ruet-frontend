@@ -172,9 +172,9 @@ const ChatArea: React.FC<ChatAreaProps> = ({ messages, loading, sending, onSendM
   const isInputEmpty = !input.trim();
 
   return (
-    <div className="flex flex-1 flex-col min-h-0">
+    <div className="relative flex flex-1 flex-col min-h-0">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto pb-28">
         {loading ? (
           <ChatLoadingSplash />
         ) : messages.length === 0 ? (
@@ -270,8 +270,8 @@ const ChatArea: React.FC<ChatAreaProps> = ({ messages, loading, sending, onSendM
         )}
       </div>
 
-      {/* Input Bar */}
-      <div className="relative px-3 pb-4 pt-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.35), #000000)' }}>
+      {/* Input Bar (absolute at bottom) */}
+      <div className="absolute left-0 right-0 bottom-0 px-3 pb-4 pt-2" style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.35), #000000)' }}>
         <div className="max-w-3xl mx-auto w-full">
         {/* Tool pill */}
         {currentTool && (
