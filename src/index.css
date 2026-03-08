@@ -1,66 +1,145 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  :root {
+    /* Pure black background matching original app #000000 */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    /* Card/Input: #212121 */
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 100%;
+
+    /* Popover: #1A1A1A */
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary: #99EF5E (bright green) */
+    --primary: 100 82% 65%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Secondary: #212121 */
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: #808080 area */
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 50%;
+
+    /* Accent: #99EF5E (same as primary) */
+    --accent: 100 82% 65%;
+    --accent-foreground: 0 0% 0%;
+
+    /* Destructive: #FF453A */
+    --destructive: 3 100% 61%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border: #333333 */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 100 82% 65%;
+
+    --radius: 0.875rem;
+
+    /* Warning/Error text: #C1B748 */
+    --warning: 52 52% 52%;
+
+    /* Success: same as primary green */
+    --success: 100 82% 65%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 65%;
+    --sidebar-primary: 100 82% 65%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 13%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 100 82% 65%;
+
+    /* Glow effects */
+    --shadow-glow: 0 0 30px -5px hsl(100 82% 65% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
 }
 
-html,
-body,
-#root {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #0b0b0b;
-  color: #ffffff;
-  overflow-x: hidden;
-}
-
-/* Scrollbar Styling */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: hsl(var(--background));
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: hsl(var(--border));
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #7CFF6B;
+  background: hsl(var(--muted-foreground));
 }
 
-/* Custom utility classes */
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon to-emerald-400;
-  }
+/* Typing dots animation */
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
 
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
-  }
+.typing-dot {
+  animation: typing-bounce 1.4s infinite ease-in-out;
+}
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
-  .glass-hover {
-    @apply hover:bg-white/10 hover:border-neon/30 hover:shadow-neon transition-all duration-300;
-  }
+/* Chat loading skeleton shimmer */
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
 
-  .glow-bg {
-    background: radial-gradient(ellipse at center, rgba(124, 255, 107, 0.12) 0%, transparent 70%);
-  }
+.skeleton-line {
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* Landing page utilities */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #7CFF6B, #34d399);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-hover {
+  transition: all 0.3s;
+}
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(124, 255, 107, 0.3);
+  box-shadow: 0 0 20px rgba(124, 255, 107, 0.15);
+}
+
+.glow-bg {
+  background: radial-gradient(ellipse at center, rgba(124, 255, 107, 0.12) 0%, transparent 70%);
 }

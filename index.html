@@ -2,14 +2,76 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/neuraruet.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="NeuraRUET — The ultimate AI assistant for RUET students and teachers. Access materials, manage schedules, and get instant answers." />
-    <meta name="theme-color" content="#0b0b0b" />
-    <title>NeuraRUET — Your RUET Life, Augmented by AI</title>
+
+    <!-- Primary SEO -->
+    <title>NeuraRUET – AI Academic Companion for RUET Students & Teachers</title>
+    <meta name="description" content="NeuraRUET is the AI-powered academic management platform for Rajshahi University of Engineering & Technology (RUET). Manage notices, materials, results, and chat — built for students, class representatives, and teachers." />
+    <meta name="keywords" content="NeuraRUET, RUET, Rajshahi University of Engineering and Technology, AI academic companion, RUET students, RUET notices, RUET class representative, RUET teachers, academic management, university app, Bangladesh university, RUET materials, RUET results, RUET CR" />
+    <meta name="author" content="NeuraRUET" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#99EF5E" />
+    <link rel="canonical" href="https://neura-ruet.lovable.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neura-ruet.lovable.app/" />
+    <meta property="og:title" content="NeuraRUET – AI Academic Companion for RUET" />
+    <meta property="og:description" content="AI-powered academic management for RUET university students, CRs, and teachers. Notices, materials, results & AI chat in one place." />
+    <meta property="og:image" content="https://neura-ruet.lovable.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="NeuraRUET" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://neura-ruet.lovable.app/" />
+    <meta name="twitter:title" content="NeuraRUET – AI Academic Companion for RUET" />
+    <meta name="twitter:description" content="AI-powered academic management for RUET university students, CRs, and teachers." />
+    <meta name="twitter:image" content="https://neura-ruet.lovable.app/og-image.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "NeuraRUET",
+      "url": "https://neura-ruet.lovable.app",
+      "description": "AI-powered academic management platform for Rajshahi University of Engineering & Technology (RUET). Manage notices, materials, results, and chat.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "NeuraRUET"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": ["student", "teacher"]
+      },
+      "about": {
+        "@type": "EducationalOrganization",
+        "name": "Rajshahi University of Engineering & Technology",
+        "alternateName": "RUET",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rajshahi",
+          "addressCountry": "BD"
+        }
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
